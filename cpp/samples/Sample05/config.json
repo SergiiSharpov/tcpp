@@ -1,0 +1,29 @@
+{
+  "build": {
+    "include": "include",
+    "libs": [
+      "glew32",
+      "SOIL",
+      "mingw32",
+      "SDL2Main",
+      "SDL2",
+      "SDL2_image"
+    ],
+    "flags": [],
+    "std": "c++11",
+    "libFolder": "lib",
+    "main": "Main.cpp",
+    "src": null,
+    "srcDir": null,
+    "autoSrc": true,
+    "copy": [
+      "dlls/*",
+      "Assets"
+    ],
+    "out": {
+      "base": "windowsOut",
+      "name": "app",
+      "target": "exe"
+    }
+  }
+}

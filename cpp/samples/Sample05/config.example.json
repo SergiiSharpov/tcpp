@@ -1,0 +1,45 @@
+{
+  "build": {
+    "include": "include",
+    "libs": [
+      "glew32",
+      "SOIL",
+      "mingw32",
+      "SDL2Main",
+      "SDL2",
+      "SDL2_image"
+    ],
+    "flags": [],
+    "std": "c++11",
+    "libFolder": "lib",
+    "main": "Main.cpp",
+    "src": [
+      "Actor.cpp",
+      "Asteroid.cpp",
+      "CircleComponent.cpp",
+      "Component.cpp",
+      "Game.cpp",
+      "InputComponent.cpp",
+      "Laser.cpp",
+      "Math.cpp",
+      "MoveComponent.cpp",
+      "Random.cpp",
+      "Shader.cpp",
+      "Ship.cpp",
+      "SpriteComponent.cpp",
+      "Texture.cpp",
+      "VertexArray.cpp"
+    ],
+    "srcDir": null,
+    "autoSrc": false,
+    "copy": [
+      "dlls/*",
+      "Assets"
+    ],
+    "out": {
+      "base": "windowsOut",
+      "name": "app",
+      "target": "exe"
+    }
+  }
+}

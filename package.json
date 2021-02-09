@@ -1,0 +1,46 @@
+{
+  "name": "tcpp",
+  "version": "0.1.0",
+  "description": "C/C++ parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha",
+    "build:prod": "./node_modules/.bin/webpack --mode production && npm run test",
+    "build:dev": "./node_modules/.bin/webpack --mode development && npm run test",
+    "dist:win": "pkg ./index.js --output ./dist/win/tcpp.exe --target win",
+    "dist:win64": "pkg ./index.js --output ./dist/win64/tcpp.exe --target win-x64",
+    "dist:linux": "pkg ./index.js --output ./dist/linux/tcpp --target linux",
+    "dist:mac": "pkg ./index.js --output ./dist/macos/tcpp --target macos",
+    "dist": "npm run build:prod && npm run dist:win && npm run dist:win64 && npm run dist:linux && npm run dist:mac"
+  },
+  "author": "Sergey Sharpov",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/SergiiSharpov/tcpp"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-export-default-from": "^7.12.1",
+    "@babel/plugin-proposal-export-namespace-from": "^7.12.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+    "@babel/plugin-transform-async-to-generator": "^7.12.13",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "raw-loader": "^4.0.2",
+    "webpack": "^5.18.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "chokidar": "^3.5.1",
+    "command-exists": "^1.2.9",
+    "glob": "^7.1.6",
+    "open": "^7.4.0",
+    "yargs": "^16.2.0",
+    "yesno": "^0.3.1"
+  }
+}

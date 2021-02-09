@@ -1,0 +1,46 @@
+{
+  "task01": {
+    "include": [],
+    "libs": {
+      "android": ["someAndroid.lib"],
+      "default": ["testLib"]
+    },
+    "libFolder": [],
+    "main": "some.cpp",
+    "src": "",
+    "out": {
+      "base": {
+        "android": "androidOut",
+        "windows": "windowsOut"
+      },
+      "name": "app",
+      "target": "exe"
+    }
+  },
+  "platformTask": {
+    "android": {
+      "include": [],
+      "libs": [],
+      "libFolder": [],
+      "main": "andr.cpp",
+      "src": "",
+      "out": {
+        "base": "outMobile",
+        "name": "app",
+        "target": "apk"
+      }
+    },
+    "default": {
+      "include": [],
+      "libs": [],
+      "libFolder": [],
+      "main": "main.cpp",
+      "src": "",
+      "out": {
+        "base": "outBase",
+        "name": "windowsApp",
+        "target": "exe"
+      }
+    }
+  }
+}

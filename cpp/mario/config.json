@@ -1,0 +1,62 @@
+{
+  "build": {
+    "include": {
+      "windows64": [
+        "3rdParty/SDL2/x86_64-w64-mingw32/include/SDL2",
+        "3rdParty/SDL2_image/x86_64-w64-mingw32/include/SDL2",
+        "3rdParty/SDL2_mixer/x86_64-w64-mingw32/include/SDL2"
+      ],
+      "windows": [
+        "3rdParty/SDL2/i686-w64-mingw32/include/SDL2",
+        "3rdParty/SDL2_image/i686-w64-mingw32/include/SDL2",
+        "3rdParty/SDL2_mixer/i686-w64-mingw32/include/SDL2"
+      ]
+    },
+    "libs": [
+      "mingw32",
+      "SDL2main",
+      "SDL2",
+      "SDL2_image",
+      "SDL2_mixer"
+    ],
+    "libFolder": {
+      "windows64": [
+        "3rdParty/SDL2/x86_64-w64-mingw32/lib",
+        "3rdParty/SDL2_image/x86_64-w64-mingw32/lib",
+        "3rdParty/SDL2_mixer/x86_64-w64-mingw32/lib"
+      ],
+      "windows": [
+        "3rdParty/SDL2/i686-w64-mingw32/lib",
+        "3rdParty/SDL2_image/i686-w64-mingw32/lib",
+        "3rdParty/SDL2_mixer/i686-w64-mingw32/lib"
+      ]
+    },
+    "flags": [],
+    "std": "c++11",
+    "main": "src/main.cpp",
+    "srcDir": "src",
+    "autoSrc": true,
+    "copy": {
+      "windows64": [
+        "assets/files",
+        "3rdParty/SDL2/x86_64-w64-mingw32/bin/*",
+        "3rdParty/SDL2_image/x86_64-w64-mingw32/bin/*",
+        "3rdParty/SDL2_mixer/x86_64-w64-mingw32/bin/*"
+      ],
+      "windows": [
+        "assets/files",
+        "3rdParty/SDL2/i686-w64-mingw32/bin/*",
+        "3rdParty/SDL2_image/i686-w64-mingw32/bin/*",
+        "3rdParty/SDL2_mixer/i686-w64-mingw32/bin/*"
+      ]
+    },
+    "out": {
+      "base": {
+        "windows": "windowsOut",
+        "windows64": "windows64Out"
+      },
+      "name": "mario",
+      "target": "exe"
+    }
+  }
+}
