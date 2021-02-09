@@ -414,6 +414,7 @@ Thank you, my future contributor, I'll be glad to see any of your activity, star
 - [ ] Move project to the TypeScript
 - [ ] Preprocessing by chaining tasks
 - [ ] Optimized compiling (chunks compiling, doesn't compile parts that wasn't changed, etc.)
+- [ ] Generate solutions for popular build systems (Cmake, make, Visual Studio, Android Studio)
 - [ ] Hot reloading
 - [ ] Inject a C/C++ test engine into the system
 - [ ] Preprocessing with custom, user defined, JavaScript modules (example: for documentation generation)
