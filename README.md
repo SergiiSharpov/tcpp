@@ -18,6 +18,7 @@
   - [main (Required)](#config-options-main)
   - [autoSrc](#config-options-auto-src)
   - [src](#config-options-src)
+  - [srcDir](#config-options-src-dir)
   - [copy](#config-options-copy)
   - [out (Required)](#config-options-out)
 - [CLI options](#cli-options) 
@@ -309,6 +310,18 @@ Boolean, set `true` if you want compiler to automaticaly collect all the source 
 String or Array that defines one or multiple source files that will be compiled together with a main file.
 
 If `autoSrc` is true then will use current parameter value as a list of additional sources to compile with.
+
+
+
+<a id="config-options-src-dir">
+
+### srcDir
+
+</a>
+
+String, available to use with `autoSrc` parameter, tells the compiler to search for sources in the current directory, may be useful when you don't want the app to search for the sources in the full project directory list.
+
+
 
 
 <a id="config-options-copy">

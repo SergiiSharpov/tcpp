@@ -37,9 +37,14 @@ export const getCurrentOS = () => {
  * include
  * libs
  * libFolder
+ * flags
+ * std
  * main
  * src
+ * srcDir
+ * autoSrc
  * out
+ * compiler
  * 
  */
 
