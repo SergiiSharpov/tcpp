@@ -221,7 +221,7 @@ Now, I'll show you a configuration for the mario game, that is placed under `cpp
 }
 ```
 
-As you can se, it contains setting for 2 types of Windows platform (x86 and x64)
+As you can see, it contains settings for 2 types of Windows platform (x86 and x64)
 It should be very easy to understand what is going on here, but anyway, I'll describe all the available options next :)
 </details>
 
