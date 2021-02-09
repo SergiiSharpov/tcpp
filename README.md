@@ -139,7 +139,7 @@ To run just call the following command:
 # Windows
 ./tcpp -t yourTaskName
 
-# Linux, MacOS, or if youu added it to the environment on Windows
+# Linux, MacOS, or if you added it to the environment on Windows
 tcpp -t yourTaskName
 ```
 

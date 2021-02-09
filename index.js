@@ -13,11 +13,21 @@ const onCommand = (argv) => {
     return false;
   }
 
-  if (data.process()) {
-    if (data.compile()) {
-      data.execute();
+  data.checkCompiler()
+  .then((compilerExists) => {
+    if (!compilerExists) {
+      return false;
     }
-  }
+
+    if (data.process()) {
+      if (data.compile()) {
+        data.execute();
+      }
+    }
+  })
+  .catch((err) => {
+    return false;
+  })
 }
 
 const args = yargs(hideBin(process.argv))

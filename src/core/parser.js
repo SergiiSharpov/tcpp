@@ -51,9 +51,9 @@ export const parse = (directory, task, os = null, configName = 'config.json') =>
     return quit("Entry point format is not C/C++");
   }
 
-  if (!isCompilerExists()) {
-    return quit("Can't find g++ command");
-  }
+  // if (!isCompilerExists()) {
+  //   return quit("Can't find g++ command");
+  // }
 
   const processor = new ProjectProcessor(config, directory);
 

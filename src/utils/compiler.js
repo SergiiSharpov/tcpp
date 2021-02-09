@@ -15,36 +15,44 @@ const Compilers = {
 }
 
 export const runScript = (command, args, options = {}) => {
-  const child = child_process.spawn(command, args, options);
+  return new Promise((resolve, reject) => {
+    const child = child_process.spawn(command, args, options);
 
-  child.stdout.setEncoding('utf8');
-  child.stdout.on('data', (data) => {
-      log(data.toString());
-  });
+    child.stdout.setEncoding('utf8');
+    child.stdout.on('data', (data) => {
+        log(data.toString());
+    });
 
-  child.stderr.setEncoding('utf8');
-  child.stderr.on('data', (data) => {
-      error(data.toString());
-  });
+    child.stderr.setEncoding('utf8');
+    child.stderr.on('data', (data) => {
+        error(data.toString());
+    });
 
-  child.on('exit', (code) => {
-    if (code === 0) {
-      notify('Done');
-    } else {
-      error('Something gone wrong, check logs for more details');
-    }
-  });
+    child.on('exit', (code) => {
+      if (code === 0) {
+        notify('Done');
+        resolve(true);
+      } else {
+        error('Something gone wrong, check logs for more details');
+        reject();
+      }
+    });
+  })
 }
 
 const installCompiler = (isCpp = true) => {
   switch (os.platform()) {
     case 'win32':
-      return open(Compilers.windows);
+      open(Compilers.windows);
+      return Promise.resolve(false);
     case 'linux':
       return isCpp ? runScript(Compilers.linuxCpp) : runScript(Compilers.linuxC);
     case 'darwin':
-      return open(Compilers.macos);
+      open(Compilers.macos);
+      return Promise.resolve(false);
   }
+
+  return Promise.resolve(true);
 }
 
 export const isCompilerExists = (command = 'g++') => {
@@ -57,13 +65,13 @@ export const isCompilerExists = (command = 'g++') => {
       question: 'Say yes if you want to continue (y/n):'
     }).then((ok) => {
       if (ok) {
-        installCompiler(isCpp);
+        return installCompiler(isCpp);
       }
 
-      return false;
+      return Promise.resolve(false);
     });
 
-  } else {
-    return Promise.resolve(true);
   }
+  
+  return Promise.resolve(true);
 }

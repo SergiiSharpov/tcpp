@@ -3,7 +3,7 @@ import Node from './node';
 
 import { quit } from '../utils/stderr';
 import { copyAll, ensureDir, exists, getSources, isSourceFile, loadFileSync } from '../utils/fileLoader';
-import { runScript } from '../utils/compiler';
+import { isCompilerExists, runScript } from '../utils/compiler';
 import { notify } from '../utils/stdout';
 
 const globalIncludesRegExp = /#include\s*<([^>]*)>/gi
@@ -62,6 +62,8 @@ const getArrayView = (item, parent = []) => {
   return parent;
 }
 
+const getCompiler = (filename) => (filename.indexOf('.cpp') !== -1) ? 'g++' : ((filename.indexOf('.c') !== -1) ? 'gcc' : null);
+
 export class ProjectProcessor {
   config = null;
   basePath = null;
@@ -83,6 +85,21 @@ export class ProjectProcessor {
   constructor(config, basePath) {
     this.config = config.task;
     this.basePath = basePath;
+  }
+
+  checkCompiler() {
+    this.build.command = this.config.compiler || null;
+    if (!this.build.command) {
+      if (this.config.main) {
+        this.build.command = getCompiler(this.config.main);
+      }
+    }
+
+    if (!this.build.command) {
+      return Promise.reject("Can't determine a correct compiler, check your project configuration");
+    }
+    
+    return isCompilerExists(this.build.command);
   }
 
   __filePath(headerName, pointerPath, basePath) {
@@ -234,12 +251,6 @@ export class ProjectProcessor {
   compile() {
     notify('Compiling resulting cli command...');
 
-    const command = (this.config.main.indexOf('.cpp') !== -1) ? 'g++' : ((this.config.main.indexOf('.c') !== -1) ? 'gcc' : null);
-
-    if (!command) {
-      return quit("Can't choose the correct compiler, check if the entry point has an accessible file format")
-    }
-
     const args = [];
 
     if (this.config.std) {
@@ -272,7 +283,6 @@ export class ProjectProcessor {
 
     args.push('-o', this.config.out.name + '.' + this.config.out.target);
 
-    this.build.command = command;
     this.build.args = args;
     this.build.directory = resultDir;
 
